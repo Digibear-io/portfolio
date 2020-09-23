@@ -1,0 +1,24 @@
+.nav {
+  position: "fixed";
+  padding-top: 5vh;
+  list-style-type: none;
+  display: flex;
+}
+
+.nav > li {
+  padding-right: 5vh;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.2rem;
+}
+
+.nav > li .active {
+  color: rgba(255, 255, 255, 1);
+}
+
+@media only screen and (max-width: 770px) {
+  .nav {
+    display: none;
+  }
+}

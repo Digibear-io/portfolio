@@ -1,65 +1,112 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
+import Head from "next/head";
+import styles from "../styles/index.module.css";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
+import Background from "../components/Background";
+import { useRef, useState } from "react";
+import Nav from "../components/Nav";
 export default function Home() {
+  const pandaRef = useRef();
   return (
-    <div className={styles.container}>
+    <div className={styles.wrapper}>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <Background src="/img/pattern1.png" key={"background"} />
+      <Nav key="nav" />
+      <motion.img
+        initial={{ x: 300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", delay: 0.2 }}
+        src="/img/mobile-menu.png"
+        className={styles.mobileMenu}
+      />
+      <div className={styles.intro}>
+        <motion.img
+          key={"image"}
+          ref={pandaRef}
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          exit={{ x: 100, opacity: 0 }}
+          src={"/img/logo.png"}
+          className={styles.logo}
+          alt="logo"
+        />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
+          key="cta"
+          className={styles.cta}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+          <p className={styles.text}>
+            <span style={{ color: "white" }}>Hello</span>, My name is
+            <br />
+            <span
+              key="author"
+              style={{ color: "white" }}
+              whileHover={{ color: "#E37332" }}
+            >
+              Lem Canady
+            </span>
+            . I am an
+            <br />
+            <span style={{ color: "white", borderBottom: "2px solid #DE4F3C" }}>
+              Interactive Designer
+            </span>
+            <br />
+            <span
+              key="illustration"
+              style={{ color: "white", borderBottom: "2px solid #DE4F3C" }}
+              whileHover={{ color: "#F0CA4D" }}
+            >
+              Illustrator
+            </span>
+            , and
+            <br />
+            <span style={{ color: "white", borderBottom: "2px solid #DE4F3C" }}>
+              Web Developer.
+            </span>
+          </p>
+          <div className={styles.links}>
+            <motion.a
+              key="dribbble"
+              target="_NEW"
+              href="https://www.dribbble.com/lcanady"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", delay: 1 }}
+            >
+              <img src="/img/dribbble.png" alt="dribbble" />
+            </motion.a>
+            <motion.a
+              key="github"
+              target="_NEW"
+              href="https://github.com/lcanady"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", delay: 1.2 }}
+            >
+              <img src="/img/github.png" alt="github" />
+            </motion.a>
+            <motion.a
+              key="linkedin"
+              target="_NEW"
+              href="https://linkedin.com/in/lcanady"
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", delay: 1.3 }}
+            >
+              <img src="/img/linkedIn.png" alt="linkedin" />
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
     </div>
-  )
+  );
 }
