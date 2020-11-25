@@ -1,39 +1,57 @@
 import { motion } from "framer-motion";
+import { useContext, useEffect } from "react";
 import styles from "./Nav.module.css";
-
-const Nav = () => {
+import { Context } from "../GlobalContextProvider";
+const Nav = ({ index }) => {
+  const { navCount, setNavCount } = useContext(Context);
+  useEffect(() => setNavCount(0), []);
   return (
     <motion.ul
       key="menu"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: "spring", delay: 0.8 }}
+      transition={{ type: "spring", delay: 0.6 }}
       className={styles.nav}
       style={{ position: "relative", zIndex: 10 }}
     >
       <li>
-        <motion.div key="home" whileHover={{ scale: 1.3 }}>
-          <a href="#" className={styles.active}>
-            HOME
-          </a>
-        </motion.div>
+        <NavLink href="/" index={0}>
+          HOME
+        </NavLink>
       </li>
       <li>
-        <motion.div key="work" whileHover={{ scale: 1.3 }}>
-          <a href="#">WORK</a>
-        </motion.div>
+        <NavLink href="/work" index={1}>
+          WORK
+        </NavLink>
       </li>
       <li>
-        <motion.div key="about" whileHover={{ scale: 1.3 }}>
-          <a href="#">ABOUT</a>
-        </motion.div>
+        <NavLink href="/about" index={2}>
+          ABOUT
+        </NavLink>
       </li>
       <li>
-        <motion.div hey="contact" whileHover={{ scale: 1.3 }}>
-          <a href="#">CONTACT</a>
-        </motion.div>
+        <NavLink href="/contact" index={3}>
+          CONTACT
+        </NavLink>
       </li>
     </motion.ul>
+  );
+};
+
+const NavLink = ({ key, href, index, children, ...rest }) => {
+  const { navCount, setNavCount } = useContext(Context);
+
+  return (
+    <motion.div key={key} whileHover={{ scale: 1.3 }}>
+      <a
+        href={href}
+        className={navCount === index ? styles.active : ""}
+        onClick={() => setNavCount(index)}
+        {...rest}
+      >
+        {children}
+      </a>
+    </motion.div>
   );
 };
 

@@ -1,0 +1,32 @@
+.logo {
+  width: 196px;
+  margin-top: -12vh;
+  opacity: 0;
+  object-fit: contain;
+  scale: 0.5;
+}
+
+.intro {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 770px) {
+  .logo {
+    margin-top: 20vh;
+    margin-bottom: 3vh;
+  }
+
+  .intro {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .logo {
+    margin-top: 7vh;
+  }
+}

@@ -1,0 +1,24 @@
+.links {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: auto;
+  padding-left: 5vh;
+}
+
+.links > a > img {
+  padding-top: 2vh;
+  padding-right: 3vh;
+}
+
+@media only screen and (max-width: 770) {
+  .links {
+    padding: 0;
+    margin: 7vh auto 0 auto;
+  }
+}
+
+@media only screen and (max-width: 500) {
+  .links {
+    margin-top: 3vh;
+  }
+}

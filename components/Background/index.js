@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import styles from "./background.module.css";
 
-const Background = ({ src, ...rest }) => {
+const Background = ({ src, color, ...rest }) => {
   return (
     <motion.div
       className={styles.background}
+      style={{ backgroundColor: color }}
       initial={{ y: -300 }}
       animate={{ y: 0 }}
       transition={{ type: "spring" }}

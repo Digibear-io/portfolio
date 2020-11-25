@@ -1,9 +1,14 @@
-const { createContext } = require("react");
+import { createContext, useState } from "react";
 
-const Context = createContext();
+export const Context = createContext();
 
 const GlobalContextProvider = ({ children }) => {
-  const initialState = {};
+  const [navCount, setNavCount] = useState(0);
+
+  const initialState = {
+    navCount,
+    setNavCount,
+  };
   return <Context.Provider value={initialState}>{children}</Context.Provider>;
 };
 
